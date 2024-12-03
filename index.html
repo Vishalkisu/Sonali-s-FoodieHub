@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sonali's FoodieHub - Global Food Delivery</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-utensils"></i>
+                <span>Sonali's FoodieHub</span>
+            </div>
+            
+            <div class="nav-toggle">
+                <div class="hamburger">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+
+            <div class="nav-menu">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#menu" class="nav-link">Menu</a></li>
+                    <li class="nav-item"><a href="#featured-section" class="nav-link">Featured</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                </ul>
+                
+                <div class="nav-actions">
+                    <div class="cart-icon" onclick="toggleCart()">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count">0</span>
+                    </div>
+                    <div class="user-profile">
+                        <i class="fas fa-user"></i>
+                        <div class="user-menu">
+                            <div class="user-menu-header">
+                                <i class="fas fa-user-circle"></i>
+                                <span id="userDisplayName">Guest</span>
+                            </div>
+                            <div class="user-menu-items">
+                                <a href="#" class="user-menu-item logged-in-only" onclick="event.preventDefault(); viewProfile()">
+                                    <i class="fas fa-id-card"></i>
+                                    <span>My Profile</span>
+                                </a>
+                                <a href="#" class="user-menu-item logged-in-only" onclick="event.preventDefault(); viewOrders()">
+                                    <i class="fas fa-history"></i>
+                                    <span>Order History</span>
+                                </a>
+                                <a href="#" class="user-menu-item logged-in-only" onclick="event.preventDefault(); logout()">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    <span>Logout</span>
+                                </a>
+                                <a href="#" class="user-menu-item logged-out-only" onclick="event.preventDefault(); toggleAuth()">
+                                    <i class="fas fa-sign-in-alt"></i>
+                                    <span>Login / Sign Up</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Discover Global Flavors</h1>
+                <p>Explore authentic cuisines from around the world, delivered to your doorstep</p>
+                <div class="hero-buttons">
+                    <button class="primary-btn">Order Now</button>
+                    <button class="secondary-btn">View Menu</button>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Delicious Food">
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <i class="fas fa-truck"></i>
+                <h3>Fast Delivery</h3>
+                <p>30 minutes delivery guaranteed</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Best Quality</h3>
+                <p>Authentic and fresh ingredients</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-wallet"></i>
+                <h3>Best Prices</h3>
+                <p>Affordable prices for everyone</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-headset"></i>
+                <h3>24/7 Support</h3>
+                <p>Always here to help you</p>
+            </div>
+        </section>
+
+        <section class="cuisine-selector" id="menu">
+            <h2>Explore World Cuisines</h2>
+            <div class="cuisine-buttons">
+                <button class="cuisine-btn active" data-cuisine="Indian">
+                    <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=200&h=200" alt="Indian Cuisine">
+                    <span>Indian</span>
+                </button>
+                <button class="cuisine-btn" data-cuisine="Chinese">
+                    <img src="https://images.unsplash.com/photo-1583032015879-e5022cb87c3b?auto=format&fit=crop&w=200&h=200" alt="Chinese Cuisine">
+                    <span>Chinese</span>
+                </button>
+                <button class="cuisine-btn" data-cuisine="Mexican">
+                    <img src="https://images.unsplash.com/photo-1599974579688-8dbdd335c77f?auto=format&fit=crop&w=200&h=200" alt="Mexican Cuisine">
+                    <span>Mexican</span>
+                </button>
+                <button class="cuisine-btn" data-cuisine="Italian">
+                    <img src="https://images.unsplash.com/photo-1498579150354-977475b7ea0b?auto=format&fit=crop&w=200&h=200" alt="Italian Cuisine">
+                    <span>Italian</span>
+                </button>
+                <button class="cuisine-btn" data-cuisine="Thai">
+                    <img src="https://images.unsplash.com/photo-1559314809-0d155014e29e?auto=format&fit=crop&w=200&h=200" alt="Thai Cuisine">
+                    <span>Thai</span>
+                </button>
+                <button class="cuisine-btn" data-cuisine="Japanese">
+                    <img src="https://images.unsplash.com/photo-1580822184713-fc5400e7fe10?auto=format&fit=crop&w=200&h=200" alt="Japanese Cuisine">
+                    <span>Japanese</span>
+                </button>
+            </div>
+            
+            <div class="search-and-filter">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search for dishes...">
+                </div>
+                <div class="filters">
+                    <select id="sortFilter">
+                        <option value="recommended">Recommended</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="rating">Rating</option>
+                    </select>
+                    <div class="price-range">
+                        <label>Price Range:</label>
+                        <input type="range" id="priceRange" min="100" max="2000" step="100" value="1000">
+                        <span id="priceValue">₹1000</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="loading" class="loading-spinner">
+                <div class="spinner"></div>
+                <p>Loading meals...</p>
+            </div>
+            
+            <div id="menu-container" class="menu-grid">
+                <!-- Menu items will be dynamically loaded here -->
+            </div>
+        </section>
+
+        <section class="featured-section" id="featured-section">
+            <div class="container">
+                <h2 class="section-title">Featured Dishes</h2>
+                <p class="section-subtitle">Discover our chef's special selection of international delicacies</p>
+                <div class="featured-controls">
+                    <button class="featured-nav prev" aria-label="Previous featured dish">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="featured-nav next" aria-label="Next featured dish">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <div class="featured-container">
+                    <div class="featured-wrapper" id="featured-wrapper">
+                        <!-- Featured items will be dynamically added here -->
+                    </div>
+                </div>
+                <div class="featured-dots" id="featured-dots">
+                    <!-- Dots will be dynamically added here -->
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="about">
+            <h2>About Sonali's FoodieHub</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Welcome to Sonali's FoodieHub, your gateway to global culinary experiences! We're passionate about bringing authentic international cuisines right to your doorstep. Our carefully curated selection of dishes from world-renowned restaurants ensures that every meal is a journey of flavors.</p>
+                    <ul class="about-features">
+                        <li><i class="fas fa-leaf"></i> Fresh, Premium Ingredients</li>
+                        <li><i class="fas fa-award"></i> Expert Master Chefs</li>
+                        <li><i class="fas fa-shield-alt"></i> Certified Hygiene</li>
+                        <li><i class="fas fa-clock"></i> Express Delivery</li>
+                        <li><i class="fas fa-heart"></i> Made with Love</li>
+                        <li><i class="fas fa-globe"></i> Global Cuisine</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d" alt="Our Kitchen">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+                <button class="close-cart" onclick="toggleCart()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be displayed here -->
+            </div>
+            <div class="cart-footer">
+                <div class="cart-summary">
+                    <div class="summary-item">
+                        <span>Subtotal:</span>
+                        <span id="cartSubtotal">₹0</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Delivery Fee:</span>
+                        <span id="deliveryFee">₹40</span>
+                    </div>
+                    <div class="summary-item total">
+                        <span>Total:</span>
+                        <span id="cartTotal">₹0</span>
+                    </div>
+                </div>
+                <button class="checkout-btn" onclick="checkout()">
+                    <i class="fas fa-lock"></i> Proceed to Checkout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="auth-modal" id="authModal">
+        <div class="auth-content">
+            <div class="auth-header">
+                <h2 id="authTitle">Login</h2>
+                <button class="close-auth" onclick="toggleAuth()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="auth-body">
+                <form id="authForm" onsubmit="handleAuth(event)">
+                    <div class="form-group signup-only">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-group signup-only">
+                        <label for="confirmPassword">Confirm Password</label>
+                        <input type="password" id="confirmPassword" placeholder="Confirm your password">
+                    </div>
+                    <button type="submit" class="auth-btn" id="authSubmitBtn">Login</button>
+                </form>
+                <p class="auth-switch">
+                    <span id="authSwitch">Don't have an account? </span>
+                    <a href="#" onclick="toggleAuthMode()">Sign Up</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="spinner"></div>
+        <p></p>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>SonaliFoodieHub</h3>
+                <p>Bringing global flavors to your doorstep</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li><i class="fas fa-phone"></i> +91 1234567890</li>
+                    <li><i class="fas fa-envelope"></i> info@Sonalifoodiehub.com</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Food Street, Mumbai, India</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Download App</h3>
+                <div class="app-links">
+                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play"></a>
+                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store"></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 SonaliFoodieHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="images/cuisine-images.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
